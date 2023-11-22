@@ -14,5 +14,8 @@ void main() {
     //tap the + icon and trigger a frame
     await tester.tap(find.byIcon(Icons.add));
     await tester.pump(); //listen the change the state of widget
+
+    expect(find.text('1'), findsOneWidget);
+    expect(find.text('0'), findsNothing);
   });
 }
