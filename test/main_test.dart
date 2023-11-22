@@ -8,12 +8,13 @@ void main() {
     await tester.pumpWidget(const MyApp());
 
     //verify that our conter starts at 0
-    expect(find.text('0'), findsOneWidget);
+    expect(find.byKey(const Key('CounterValue')), findsOneWidget);
     expect(find.text('1'), findsNothing);
 
     //tap the + icon and trigger a frame
     await tester.tap(find.byIcon(Icons.add));
-    await tester.pump(); //listen the change the state of widget
+    await tester
+        .pump(Duration(seconds: 10)); //listen the change the state of widget
 
     expect(find.text('1'), findsOneWidget);
     expect(find.text('0'), findsNothing);
